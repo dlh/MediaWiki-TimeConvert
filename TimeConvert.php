@@ -45,7 +45,7 @@ class TimeConvert
 
             if (!empty($errors))
             {
-                $errorMessage = "(" . join(", ", $errors) . ") ";
+                $errorMessage = "(" . join(". ", $errors) . ") ";
             }
 
             return $errorMessage . $dt->format($format);
