@@ -5,7 +5,7 @@
 
 $wgExtensionCredits['parserhook'][] = array(
    "path" => __FILE__,
-   "name" => "Time Convert",
+   "name" => "TimeConvert",
    "description" => "Adds a parser function to convert a time to a different time zone",
    "author" => "dlh",
    "url" => "http://github.com/dlh/MediaWiki-TimeConvert"
