@@ -36,8 +36,7 @@ class TimeConvert
             }
             if (empty($format))
             {
-                // Use ISO 8601 as the default
-                $format = 'Y-m-d\TH:i:sP';
+                $format = DateTime::ISO8601;
             }
 
             $dt = new DateTime($time);
