@@ -27,12 +27,12 @@ class TimeConvert
             if (empty($time))
             {
                 $time = "now";
-                $errors[] = "No time specified, using '$time'";
+                $errors[] = wfMessage("timeconvert-notime", $time)->parse();
             }
             if (empty($zoneName))
             {
                 $zoneName = "Etc/GMT";
-                $errors[] = "No zone name specified, using '$zoneName'";
+                $errors[] = wfMessage("timeconvert-nozone", $zoneName)->parse();
             }
             if (empty($format))
             {
