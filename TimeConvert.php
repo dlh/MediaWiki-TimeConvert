@@ -41,13 +41,14 @@ class TimeConvert
 
             $dt = new DateTime($time);
             $dt->setTimezone(new DateTimeZone($zoneName));
+            $formattedTime = $dt->format($format);
 
             if (!empty($errors))
             {
-                $errorMessage = "(" . join(". ", $errors) . ") ";
+                global $wgLang;
+                return "(" . $wgLang->commaList($errors) . ") " . $formattedTime;
             }
-
-            return $errorMessage . $dt->format($format);
+            return $formattedTime;
         }
         catch (Exception $e)
         {
