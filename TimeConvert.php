@@ -21,8 +21,8 @@ class TimeConvert
 
     public static function onScribuntoExternalLibraries($engine, &$extraLibraries)
     {
-		$extraLibraries["mw.ext.timeconvert"] = "TimeConvertLua";
-		return true;
+        $extraLibraries["mw.ext.timeconvert"] = "TimeConvertLua";
+        return true;
     }
 
     public static function timeconvert($parser, $time="", $zoneName="", $format="")
