@@ -1,8 +1,8 @@
 TimeConvert
 ===========
 
-A MediaWiki extension that adds a parser function to convert a time to a
-different time zone.
+A MediaWiki extension that provides a parser function and Scribunto Lua library
+to convert a time to a different time zone.
 
 * Project site: http://github.com/dlh/MediaWiki-TimeConvert
 * MediaWiki page: http://www.mediawiki.org/wiki/Extension:TimeConvert
