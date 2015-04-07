@@ -26,6 +26,17 @@ Extension Documentation
 * `format`: The [output format](http://www.php.net/manual/en/function.date.php)
   to use. The default is [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
 
+Scribunto Lua Library
+---------------------
+
+TimeConvert provides a [Scribunto](http://www.mediawiki.org/wiki/Extension:Scribunto) library,
+`mw.ext.timeconvert`. Examples:
+
+    local timeconvert = mw.ext.timeconvert.timeconvert
+    timeconvert("2014-01-01 13:00 GMT", "America/New_York")          => "2014-01-01T08:00:00-0500"
+    timeconvert("2014-01-01 13:00 GMT", "America/New_York", "g:i A") => "8:00 AM"
+    timeconvert("2014-01-01 8:00 AM EST", "Etc/GMT", "G:i")          => "13:00"
+
 Download
 --------
 

@@ -3,7 +3,7 @@
 // Copyright (C) 2014 DLH
 // See LICENSE.txt for the MIT license.
 
-$wgExtensionCredits['parserhook'][] = array(
+$wgExtensionCredits["parserhook"][] = array(
    "path" => __FILE__,
    "name" => "TimeConvert",
    "description" => "Adds a parser function to convert a time to a different time zone",
@@ -13,13 +13,19 @@ $wgExtensionCredits['parserhook'][] = array(
 
 class TimeConvert
 {
-    public static function ParserFirstCallInit(&$parser)
+    public static function onParserFirstCallInit(&$parser)
     {
-        $parser->setFunctionHook("timeconvert", "TimeConvert::TimeConvertFunctionHook");
+        $parser->setFunctionHook("timeconvert", "TimeConvert::timeconvert");
         return true;
     }
 
-    public static function TimeConvertFunctionHook($parser, $time="", $zoneName="", $format="")
+    public static function onScribuntoExternalLibraries($engine, &$extraLibraries)
+    {
+		$extraLibraries["mw.ext.timeconvert"] = "TimeConvertLua";
+		return true;
+    }
+
+    public static function timeconvert($parser, $time="", $zoneName="", $format="")
     {
         try
         {
@@ -55,9 +61,13 @@ class TimeConvert
             return $e->getMessage();
         }
     }
+
+    private function __construct() {}
 }
 
-$wgHooks["ParserFirstCallInit"][] = "TimeConvert::ParserFirstCallInit";
-$wgExtensionMessagesFiles["TimeConvert"] = __DIR__ . '/TimeConvert.i18n.php';
+$wgHooks["ParserFirstCallInit"][] = "TimeConvert::onParserFirstCallInit";
+$wgHooks["ScribuntoExternalLibraries"][] = "TimeConvert::onScribuntoExternalLibraries";
+$wgAutoloadClasses["TimeConvertLua"] = __DIR__ . "/TimeConvertLua.php";
+$wgExtensionMessagesFiles["TimeConvert"] = __DIR__ . "/TimeConvert.i18n.php";
 
 ?>
