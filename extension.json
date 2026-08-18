@@ -1,0 +1,33 @@
+{
+	"name": "TimeConvert",
+	"version": "1.0.0",
+	"author": "dlh",
+	"url": "https://github.com/dlh/MediaWiki-TimeConvert",
+	"descriptionmsg": "timeconvert-desc",
+	"license-name": "MIT",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"MessagesDirs": {
+		"TimeConvert": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"TimeConvertMagic": "TimeConvert.magic.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\TimeConvert\\": "src/"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "main",
+		"ScribuntoExternalLibraries": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\TimeConvert\\Hooks"
+		}
+	},
+	"manifest_version": 2
+}

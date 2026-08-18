@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"dlh"
+		]
+	},
+	"timeconvert-desc": "Provides a parser function and Scribunto Lua library to convert a time to a different time zone",
+	"timeconvert-notime": "No time specified, using '$1'",
+	"timeconvert-nozone": "No zone name specified, using '$1'"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"dlh"
+		]
+	},
+	"timeconvert-desc": "{{desc|name=TimeConvert|url=https://www.mediawiki.org/wiki/Extension:TimeConvert}}",
+	"timeconvert-notime": "Error message shown when the parser function or Lua library is called without a time. Parameters:\n* $1 - The fallback time value.",
+	"timeconvert-nozone": "Error message shown when the parser function or Lua library is called without a time zone. Parameters:\n* $1 - The fallback time zone name."
+}
