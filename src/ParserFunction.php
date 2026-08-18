@@ -19,13 +19,16 @@ class ParserFunction {
 		string $time = '',
 		string $zoneName = '',
 		string $format = ''
-	): string {
-		return self::convert(
-			$time,
-			$zoneName,
-			$format,
-			MediaWikiServices::getInstance()->getContentLanguage()
-		);
+	): array {
+		return [
+			self::convert(
+				$time,
+				$zoneName,
+				$format,
+				MediaWikiServices::getInstance()->getContentLanguage()
+			),
+			'nowiki' => true,
+		];
 	}
 
 	public static function convert(
