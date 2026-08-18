@@ -37,35 +37,41 @@ class ParserFunction {
 		string $format = '',
 		?Language $language = null
 	): string {
-		try {
-			$errors = [];
+		$errors = [];
 
-			if ( trim( $time ) === '' ) {
-				$time = self::DEFAULT_TIME;
-				$errors[] = wfMessage( 'timeconvert-notime', $time )->text();
-			}
-
-			if ( trim( $zoneName ) === '' ) {
-				$zoneName = self::DEFAULT_ZONE;
-				$errors[] = wfMessage( 'timeconvert-nozone', $zoneName )->text();
-			}
-
-			if ( $format === '' ) {
-				$format = self::DEFAULT_FORMAT;
-			}
-
-			$dateTime = new DateTime( $time );
-			$dateTime->setTimezone( new DateTimeZone( $zoneName ) );
-			$formattedTime = $dateTime->format( $format );
-
-			if ( $errors ) {
-				$language ??= MediaWikiServices::getInstance()->getContentLanguage();
-				return '(' . $language->commaList( $errors ) . ') ' . $formattedTime;
-			}
-
-			return $formattedTime;
-		} catch ( Exception $e ) {
-			return $e->getMessage();
+		if ( trim( $time ) === '' ) {
+			$time = self::DEFAULT_TIME;
+			$errors[] = wfMessage( 'timeconvert-notime', $time )->text();
 		}
+
+		if ( trim( $zoneName ) === '' ) {
+			$zoneName = self::DEFAULT_ZONE;
+			$errors[] = wfMessage( 'timeconvert-nozone', $zoneName )->text();
+		}
+
+		if ( $format === '' ) {
+			$format = self::DEFAULT_FORMAT;
+		}
+
+		try {
+			$dateTime = new DateTime( $time );
+		} catch ( Exception ) {
+			return wfMessage( 'timeconvert-invalidtime' )->text();
+		}
+
+		try {
+			$dateTime->setTimezone( new DateTimeZone( $zoneName ) );
+		} catch ( Exception ) {
+			return wfMessage( 'timeconvert-invalidzone' )->text();
+		}
+
+		$formattedTime = $dateTime->format( $format );
+
+		if ( $errors ) {
+			$language ??= MediaWikiServices::getInstance()->getContentLanguage();
+			return '(' . $language->commaList( $errors ) . ') ' . $formattedTime;
+		}
+
+		return $formattedTime;
 	}
 }
