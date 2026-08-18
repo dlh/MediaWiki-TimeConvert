@@ -17,6 +17,20 @@
 	"ExtensionMessagesFiles": {
 		"TimeConvertMagic": "TimeConvert.magic.php"
 	},
+	"config": {
+		"TimeConvertTimetableMaxRows": {
+			"value": 20,
+			"description": "Maximum number of rows allowed in a timetable parser function."
+		},
+		"TimeConvertTimetableMaxZones": {
+			"value": 10,
+			"description": "Maximum number of output time zones allowed in a timetable parser function."
+		},
+		"TimeConvertTimetableMaxFormatLength": {
+			"value": 100,
+			"description": "Maximum length of the output format string allowed in a timetable parser function."
+		}
+	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\TimeConvert\\": "src/"
 	},

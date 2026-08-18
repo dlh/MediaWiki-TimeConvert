@@ -8,5 +8,8 @@
 	"timeconvert-notime": "No time specified, using '$1'",
 	"timeconvert-nozone": "No zone name specified, using '$1'",
 	"timeconvert-invalidtime": "Invalid time",
-	"timeconvert-invalidzone": "Invalid time zone"
+	"timeconvert-invalidzone": "Invalid time zone",
+	"timeconvert-timetable-too-many-rows": "Too many timetable rows; the maximum is $1.",
+	"timeconvert-timetable-too-many-zones": "Too many timetable zones; the maximum is $1.",
+	"timeconvert-timetable-format-too-long": "Timetable format is too long; the maximum length is $1 characters."
 }

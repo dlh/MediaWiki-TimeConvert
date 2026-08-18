@@ -7,6 +7,7 @@ use MediaWiki\Parser\Parser;
 class Hooks {
 	public function onParserFirstCallInit( Parser $parser ): void {
 		$parser->setFunctionHook( 'timeconvert', [ ParserFunction::class, 'render' ] );
+		$parser->setFunctionHook( 'timetable', [ TimeTableParserFunction::class, 'render' ] );
 	}
 
 	public function onScribuntoExternalLibraries( string $engine, array &$extraLibraries ): void {

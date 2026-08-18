@@ -8,5 +8,8 @@
 	"timeconvert-notime": "Error message shown when the parser function or Lua library is called without a time. Parameters:\n* $1 - The fallback time value.",
 	"timeconvert-nozone": "Error message shown when the parser function or Lua library is called without a time zone. Parameters:\n* $1 - The fallback time zone name.",
 	"timeconvert-invalidtime": "Error message shown when the parser function or Lua library is called with a time value that cannot be parsed.",
-	"timeconvert-invalidzone": "Error message shown when the parser function or Lua library is called with an unknown or invalid time zone name."
+	"timeconvert-invalidzone": "Error message shown when the parser function or Lua library is called with an unknown or invalid time zone name.",
+	"timeconvert-timetable-too-many-rows": "Error message shown when the timetable parser function is called with too many date/time rows. Parameters:\n* $1 - The maximum allowed number of rows.",
+	"timeconvert-timetable-too-many-zones": "Error message shown when the timetable parser function is called with too many output time zones. Parameters:\n* $1 - The maximum allowed number of zones.",
+	"timeconvert-timetable-format-too-long": "Error message shown when the timetable parser function is called with an output format string that is too long. Parameters:\n* $1 - The maximum allowed format length in characters."
 }

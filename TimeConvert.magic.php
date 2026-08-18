@@ -7,4 +7,5 @@ $magicWords = [];
 
 $magicWords['en'] = [
 	'timeconvert' => [ 0, 'timeconvert' ],
+	'timetable' => [ 0, 'timetable' ],
 ];
