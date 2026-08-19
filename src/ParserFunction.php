@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\TimeConvert;
 use DateTime;
 use DateTimeZone;
 use Exception;
-use MediaWiki\Language\Language;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 
@@ -21,12 +20,7 @@ class ParserFunction {
 		string $format = ''
 	): array {
 		return [
-			self::convert(
-				$time,
-				$zoneName,
-				$format,
-				MediaWikiServices::getInstance()->getContentLanguage()
-			),
+			self::convert( $time, $zoneName, $format ),
 			'nowiki' => true,
 		];
 	}
@@ -34,19 +28,19 @@ class ParserFunction {
 	public static function convert(
 		string $time = '',
 		string $zoneName = '',
-		string $format = '',
-		?Language $language = null
+		string $format = ''
 	): string {
+		$language = MediaWikiServices::getInstance()->getContentLanguage();
 		$errors = [];
 
 		if ( trim( $time ) === '' ) {
 			$time = self::DEFAULT_TIME;
-			$errors[] = wfMessage( 'timeconvert-notime', $time )->text();
+			$errors[] = wfMessage( 'timeconvert-notime', $time )->inLanguage( $language )->text();
 		}
 
 		if ( trim( $zoneName ) === '' ) {
 			$zoneName = self::DEFAULT_ZONE;
-			$errors[] = wfMessage( 'timeconvert-nozone', $zoneName )->text();
+			$errors[] = wfMessage( 'timeconvert-nozone', $zoneName )->inLanguage( $language )->text();
 		}
 
 		if ( $format === '' ) {
@@ -56,19 +50,18 @@ class ParserFunction {
 		try {
 			$dateTime = new DateTime( $time );
 		} catch ( Exception ) {
-			return wfMessage( 'timeconvert-invalidtime' )->text();
+			return wfMessage( 'timeconvert-invalidtime' )->inLanguage( $language )->text();
 		}
 
 		try {
 			$dateTime->setTimezone( new DateTimeZone( $zoneName ) );
 		} catch ( Exception ) {
-			return wfMessage( 'timeconvert-invalidzone' )->text();
+			return wfMessage( 'timeconvert-invalidzone' )->inLanguage( $language )->text();
 		}
 
 		$formattedTime = $dateTime->format( $format );
 
 		if ( $errors ) {
-			$language ??= MediaWikiServices::getInstance()->getContentLanguage();
 			return '(' . $language->commaList( $errors ) . ') ' . $formattedTime;
 		}
 
