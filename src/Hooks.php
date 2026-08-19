@@ -2,17 +2,15 @@
 
 namespace MediaWiki\Extension\TimeConvert;
 
+use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Parser\Parser;
 
-class Hooks {
-	public function onParserFirstCallInit( Parser $parser ): void {
+class Hooks implements ParserFirstCallInitHook {
+	/**
+	 * @param Parser $parser
+	 */
+	public function onParserFirstCallInit( $parser ): void {
 		$parser->setFunctionHook( 'timeconvert', [ ParserFunction::class, 'render' ] );
 		$parser->setFunctionHook( 'timetable', [ TimeTableParserFunction::class, 'render' ] );
-	}
-
-	public function onScribuntoExternalLibraries( string $engine, array &$extraLibraries ): void {
-		if ( $engine === 'lua' ) {
-			$extraLibraries['mw.ext.timeconvert'] = LuaLibrary::class;
-		}
 	}
 }

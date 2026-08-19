@@ -36,11 +36,14 @@
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "main",
-		"ScribuntoExternalLibraries": "main"
+		"ScribuntoExternalLibraries": "scribunto"
 	},
 	"HookHandlers": {
 		"main": {
 			"class": "MediaWiki\\Extension\\TimeConvert\\Hooks"
+		},
+		"scribunto": {
+			"class": "MediaWiki\\Extension\\TimeConvert\\ScribuntoHooks"
 		}
 	},
 	"manifest_version": 2
