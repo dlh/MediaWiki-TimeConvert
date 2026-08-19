@@ -11,7 +11,7 @@ use MediaWiki\Parser\Parser;
 class ParserFunction {
 	private const DEFAULT_TIME = 'now';
 	private const DEFAULT_ZONE = 'Etc/GMT';
-	private const DEFAULT_FORMAT = DateTime::ISO8601;
+	private const DEFAULT_FORMAT = DateTime::RFC3339;
 
 	public static function render(
 		Parser $parser,

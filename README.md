@@ -10,7 +10,7 @@ building time-zone tables, plus a Scribunto Lua library for time conversion.
 timeconvert
 -----------
 
-    {{#timeconvert:2014-01-01 13:00 GMT|America/New_York}}       => 2014-01-01T08:00:00-0500
+    {{#timeconvert:2014-01-01 13:00 GMT|America/New_York}}       => 2014-01-01T08:00:00-05:00
     {{#timeconvert:2014-01-01 13:00 GMT|America/New_York|g:i A}} => 8:00 AM
     {{#timeconvert:2014-01-01 8:00 AM EST|Etc/GMT|G:i}}          => 13:00
 
@@ -21,13 +21,13 @@ timeconvert
 * `time zone`: The [time zone](https://www.php.net/manual/en/timezones.php) to
   convert `date time` to.
 * `format`: The [output format](https://www.php.net/manual/en/function.date.php)
-  to use. The default is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+  to use. The default is [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339).
 
 TimeConvert also provides a [Scribunto](https://www.mediawiki.org/wiki/Extension:Scribunto)
 library, `mw.ext.timeconvert`, when Scribunto is installed:
 
     local timeconvert = mw.ext.timeconvert.timeconvert
-    timeconvert("2014-01-01 13:00 GMT", "America/New_York")          => "2014-01-01T08:00:00-0500"
+    timeconvert("2014-01-01 13:00 GMT", "America/New_York")          => "2014-01-01T08:00:00-05:00"
     timeconvert("2014-01-01 13:00 GMT", "America/New_York", "g:i A") => "8:00 AM"
     timeconvert("2014-01-01 8:00 AM EST", "Etc/GMT", "G:i")          => "13:00"
 
